@@ -1,17 +1,16 @@
 const { Client, LocalAuth } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
-
 const puppeteer = require('puppeteer-core');
+const { executablePath } = require('puppeteer-chromium-resolver'); // Importa el resolver
 
 const client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: {
-        executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || '/app/.apt/usr/bin/google-chrome',
         headless: true,
-        args: ['--no-sandbox', '--disable-setuid-sandbox']
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        executablePath: await executablePath(),  // Usa el resolver para la ruta
     }
 });
-
 
 
 client.on('qr', qr => {
