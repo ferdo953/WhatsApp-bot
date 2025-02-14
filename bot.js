@@ -18,7 +18,7 @@ async function iniciarBot() {
         puppeteer: {
             headless: true,
             args: ['--no-sandbox', '--disable-setuid-sandbox'],
-            executablePath: browserPath, // Usar la ruta obtenida
+            executablePath: '/opt/homebrew/bin/chromium', // Cambia esto según la ruta que encontraste
         }
     });
 
