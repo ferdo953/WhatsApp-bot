@@ -1,17 +1,9 @@
 const { Client, LocalAuth } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
 const puppeteer = require('puppeteer-core');
-const PCR = require('puppeteer-chromium-resolver'); // Importa correctamente el módulo
 
 async function iniciarBot() {
-    // Resolver la ruta del ejecutable de Chromium
-    const stats = await PCR(); // Llamar a la función principal
-    const browserPath = stats.executablePath; // Obtener la ruta
-
-    if (!browserPath) {
-        console.error('No se pudo encontrar un ejecutable de Chromium.');
-        return;
-    }
+    // Resolver la ruta del ejecutable de Chromiu
 
     const client = new Client({
         authStrategy: new LocalAuth(),
